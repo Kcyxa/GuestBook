@@ -1,0 +1,8 @@
+book_homepage:
+    pattern:  /hello/{firstName}/{count}
+    defaults: { _controller: BookBundle:Default:index }
+
+BookBundle_book:
+     resource: "@BookBundle/Resources/config/routing/book.yml"
+     prefix:   /
+

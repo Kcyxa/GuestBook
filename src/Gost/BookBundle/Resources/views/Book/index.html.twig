@@ -1,0 +1,36 @@
+
+{% extends 'BookBundle::layout.html.twig' %}
+
+{% block title %} GuestBook | Home {% endblock %}
+
+{% block content %}
+<div class="offset5">
+<form action="{{ path('book_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }} {{ form_widget(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.texts) }}
+    {{ form_rest(form) }}
+
+    <input type="submit" value="Create" />
+</form>
+</div>
+
+<hr />
+
+
+<div class="offset5">
+{{ pagerfanta(my_pager,'twitter_bootstrap') }}
+
+
+    {% for entity in entities %}
+        <span><em>Пользователь:  </em></span>{{ entity.name }}<br />
+        <span>Сообщения: </span>{{ entity.texts [0:99] }}<br />
+
+        <a href="{{ path('book_show', { 'id': entity.id }) }}">show</a>
+        <a href="{{ path('book_delete', { 'id': entity.id }) }}">delete</a><br />
+    {% endfor %}
+</div>
+
+{% endblock %}

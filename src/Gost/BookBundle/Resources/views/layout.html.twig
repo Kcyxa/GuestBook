@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/acmehello/css/bootstrap.css') }}" type="text/css" />
+{% endblock %}
+
+{% block body  %}
+
+
+    <div class="offset10">
+        <a class="btn btn-success" href="{{ path('fos_user_security_login') }}">Login</a>
+        <a class="btn btn-success" href="{{ path('fos_user_registration_register') }}">Register</a>
+        <a class="btn btn-success" href="{{ path('fos_user_security_logout') }}">Logout</a>
+        <br/>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <span class="label label-important"> {{ app.user.username }}</span>
+        {% else %}
+           <span class="label label-important"> {{ 'Anonymous' | trans }}</span>
+        {% endif %}
+        <br/>
+    </div>
+
+
+
+    {% block content %}
+    {% endblock %}
+
+
+    <div class="modal-footer">
+        <span class="text-info">GuestBook by Kcyxa</span>
+    </div>
+{% endblock %}

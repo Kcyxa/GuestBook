@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title 'Kcyxa\'s page=)' %}
+
+{% block body %}
+{#
+    This is a page!
+#}
+
+{{ event.name }}<br/>
+{{ event.location }}<br/>
+
+{% for i in 1..count %}
+    Приветствую Вас <strong>{{ name | upper}}</strong> #{{ i }}!<br>
+{% endfor %}
+{% endblock %}
+
